@@ -1,0 +1,2 @@
+# Engenharia_de_Dados_com_terraform_AWS_Azure_Databricks
+Neste repositorio tenho varios projetinhos envolvendo principalmente terraform e outras ferramentas como databricks
