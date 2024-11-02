@@ -8,7 +8,7 @@ resource "aws_instance" "instance_1" {
   subnet_id     = var.subnets[0]
 
   tags = {
-    Name = "DSA Instance 1"
+    Name = "Lab2-instancia 1"
   }
 }
 
@@ -18,6 +18,6 @@ resource "aws_instance" "instance_2" {
   subnet_id     = var.subnets[1]
 
   tags = {
-    Name = " DSA Instance 2"
+    Name = "Lab2-instancia 2"
   }
 }
