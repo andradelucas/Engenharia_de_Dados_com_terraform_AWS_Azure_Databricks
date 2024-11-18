@@ -4,7 +4,7 @@ resource "aws_instance" "dsa_instance" {
   
   instance_type = var.instance_type
   
-  key_name = "dsa-lab3"
+  key_name = "EC2_conect"
 
   tags = {
     Name = "lab3-t2-terraform"
@@ -15,12 +15,12 @@ resource "aws_instance" "dsa_instance" {
     inline = ["sudo yum update -y", 
               "sudo yum install httpd -y", 
               "sudo systemctl start httpd", 
-              "sudo bash -c 'echo Criando o Primeiro Web Server com Terraform na DSA > /var/www/html/index.html'"]
+              "sudo bash -c 'echo Primeiro Site criado com terraform :) > /var/www/html/index.html'"]
 
     connection {
       type     = "ssh"
       user     = "ec2-user"
-      private_key = file("dsa-lab3.pem")
+      private_key = file("EC2_conect.pem")
       host     = self.public_ip
     }
   }

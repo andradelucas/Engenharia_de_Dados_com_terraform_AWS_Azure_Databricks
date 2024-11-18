@@ -26,7 +26,7 @@ resource "aws_security_group" "permite_ssh_2" {
 
 }
 
-resource "aws_instance" "dsa_instance" {
+resource "aws_instance" "Web_server" {
   
   ami = "ami-0a0d9cf81c479446a"  
   
@@ -34,32 +34,32 @@ resource "aws_instance" "dsa_instance" {
 
   vpc_security_group_ids = [aws_security_group.permite_ssh_2.id]
   
-  key_name = "dsa-lab3"
+  key_name = "EC2_conect"
 
   tags = {
     Name = "lab3-t4-terraform"
   }
 
   provisioner "file" {
-    source      = "dsa_script.sh"
-    destination = "/tmp/dsa_script.sh"
+    source      = "script_config.sh"
+    destination = "/tmp/script_config.sh"
 
     connection {
       type     = "ssh"
       user     = "ec2-user"
-      private_key = file("dsa-lab3.pem")
+      private_key = file("EC2_conect.pem")
       host     = self.public_ip
     }
   }
 
   provisioner "remote-exec" {
     
-    inline = ["chmod +x /tmp/dsa_script.sh", "/tmp/dsa_script.sh"]
+    inline = ["chmod +x /tmp/script_config.sh", "/tmp/script_config.sh"]
 
     connection {
       type     = "ssh"
       user     = "ec2-user"
-      private_key = file("dsa-lab3.pem")
+      private_key = file("EC2_conect.pem")
       host     = self.public_ip
     }
   }
